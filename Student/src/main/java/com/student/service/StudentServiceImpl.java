@@ -1,0 +1,52 @@
+package com.student.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import com.student.dao.StudentDAO;
+import com.student.model.Student;
+
+@Service
+public class StudentServiceImpl implements StudentService {
+	
+	private StudentDAO personDAO;
+
+	public void setStudentDAO(StudentDAO personDAO) {
+		this.personDAO = personDAO;
+	}
+
+
+	@Transactional
+	public void addStudent(Student p) {
+		this.personDAO.addStudent(p);
+	}
+
+
+	@Transactional
+	public void updateStudent(Student p) {
+		this.personDAO.updateStudent(p);
+	}
+
+
+	@Transactional
+	public List<Student> listStudents() {
+		return this.personDAO.listStudents();
+	}
+
+
+	@Transactional
+	public Student getStudentById(int id) {
+		return this.personDAO.getStudentById(id);
+	}
+
+
+	@Transactional
+	public void removeStudent(int id) {
+		this.personDAO.removeStudent(id);
+	}
+
+
+}
